@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>GAMEGEAR - Products</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+
+        body {
+            margin: 0;
+            background-color: #111;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .header {
+            padding: 25px;
+            border-bottom: 2px solid red;
+            text-align: center;
+        }
+
+        .heading {
+            font-family: "Press Start 2P", sans-serif;
+            font-size: 30px;
+            margin: 0;
+        }
+
+        .heading span {
+            color: red;
+        }
+
+        .nav {
+            margin-top: 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .nav a:hover {
+            color: red;
+        }
+
+        .game-section {
+            width: 90%;
+            margin: 40px auto;
+        }
+
+        .section-title {
+            color: red;
+            font-family: "Press Start 2P", sans-serif;
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .game-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .game {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1c1c1c;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+
+        .game:hover {
+            border-color: red;
+        }
+
+        .game-name {
+            font-size: 16px;
+        }
+
+        .price {
+            color: red;
+            font-weight: bold;
+            margin-left: auto;
+            margin-right: 25px;
+        }
+
+        .cart-btn {
+            padding: 8px 15px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .cart-btn:hover {
+            background-color: darkred;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+
+        <h1 class="heading">
+            GAME<span>GEAR</span>
+        </h1>
+
+        <div class="nav">
+            <a href="project.html">HOME</a>
+            <a href="products.html">PRODUCTS</a>
+            <a href="cart.html">CART</a>
+            <a href="login.html">LOGIN</a>
+        </div>
+
+    </div>
+
+
+    <!-- TOP 50 GAMES -->
+
+    <div class="game-section">
+
+        <h2 class="section-title">🔥 TOP 50 GAMES</h2>
+
+        <div class="game-list" id="top-games"></div>
+
+    </div>
+
+
+    <!-- ALL OTHER GAMES -->
+
+    <div class="game-section">
+
+        <h2 class="section-title">🎮 ALL GAMES</h2>
+
+        <div class="game-list" id="all-games"></div>
+
+    </div>
+
+
+    <script>
+
+        const games = [
+
+            // TOP 50
+
+            ["Red Dead Redemption 2", 2499],
+            ["Grand Theft Auto V", 1499],
+            ["Grand Theft Auto: San Andreas", 999],
+            ["Grand Theft Auto IV", 1299],
+            ["The Witcher 3: Wild Hunt", 1499],
+            ["The Elder Scrolls V: Skyrim", 1299],
+            ["The Legend of Zelda: Breath of the Wild", 2999],
+            ["The Legend of Zelda: Tears of the Kingdom", 3999],
+            ["Elden Ring", 2499],
+            ["Cyberpunk 2077", 2499],
+            ["Ghost of Tsushima", 2999],
+            ["Horizon Zero Dawn", 1999],
+            ["Horizon Forbidden West", 2999],
+            ["Assassin's Creed IV: Black Flag", 999],
+            ["Assassin's Creed II", 799],
+            ["Sleeping Dogs", 899],
+            ["Batman: Arkham City", 999],
+            ["Marvel's Spider-Man", 2999],
+            ["Spider-Man 2", 3999],
+            ["Death Stranding", 1999],
+
+            ["Baldur's Gate 3", 2999],
+            ["Baldur's Gate II: Shadows of Amn", 999],
+            ["The Elder Scrolls IV: Oblivion", 999],
+            ["Fallout: New Vegas", 999],
+            ["Fallout 3", 999],
+            ["Fallout 4", 1499],
+            ["Mass Effect", 999],
+            ["Mass Effect 2", 999],
+            ["Mass Effect 3", 999],
+            ["Dragon Age: Origins", 999],
+
+            ["Dragon Age: Inquisition", 1299],
+            ["Divinity: Original Sin 2", 1499],
+            ["Kingdom Come: Deliverance", 1299],
+            ["Kingdom Come: Deliverance II", 2499],
+            ["Persona 5 Royal", 2499],
+            ["Persona 4 Golden", 1499],
+            ["Final Fantasy VII", 1299],
+            ["Final Fantasy VII Remake", 2499],
+            ["Final Fantasy X", 1299],
+            ["Clair Obscur: Expedition 33", 2999],
+
+            ["The Last of Us", 2999],
+            ["The Last of Us Part II", 2999],
+            ["Red Dead Redemption", 1999],
+            ["God of War", 2499],
+            ["God of War Ragnarök", 2999],
+            ["Uncharted 4: A Thief's End", 1999],
+            ["Uncharted 2: Among Thieves", 1499],
+            ["Detroit: Become Human", 1999],
+            ["Life Is Strange", 799],
+            ["Life Is Strange: Before the Storm", 799],
+
+
+            // GAMES 51 - 100
+
+            ["Firewatch", 699],
+            ["What Remains of Edith Finch", 599],
+            ["The Walking Dead: Season One", 799],
+            ["Disco Elysium", 999],
+            ["To the Moon", 499],
+            ["Undertale", 599],
+            ["Spiritfarer", 899],
+            ["Outer Wilds", 1299],
+            ["Brothers: A Tale of Two Sons", 699],
+            ["That Dragon, Cancer", 599],
+
+            ["Half-Life", 599],
+            ["Half-Life 2", 799],
+            ["Half-Life: Alyx", 2499],
+            ["DOOM", 1299],
+            ["DOOM Eternal", 1999],
+            ["DOOM: The Dark Ages", 2999],
+            ["BioShock", 999],
+            ["BioShock Infinite", 999],
+            ["Titanfall 2", 999],
+            ["Call of Duty 4: Modern Warfare", 1299],
+
+            ["Call of Duty: Modern Warfare 2", 1499],
+            ["Call of Duty: Black Ops", 1499],
+            ["Halo: Combat Evolved", 999],
+            ["Halo 2", 999],
+            ["Halo 3", 999],
+            ["Far Cry 3", 999],
+            ["Wolfenstein: The New Order", 999],
+            ["Metro 2033", 799],
+            ["Metro Exodus", 1499],
+            ["Borderlands 2", 999],
+
+            ["Dark Souls", 1499],
+            ["Dark Souls II", 1499],
+            ["Dark Souls III", 1999],
+            ["Sekiro: Shadows Die Twice", 2499],
+            ["Bloodborne", 1999],
+            ["Demon's Souls", 2499],
+            ["Lies of P", 2499],
+            ["Nioh", 1499],
+            ["Nioh 2", 1999],
+            ["Hollow Knight", 699],
+
+            ["Hollow Knight: Silksong", 1499],
+            ["Cuphead", 999],
+            ["Celeste", 599],
+            ["Super Meat Boy", 499],
+            ["Dead Cells", 999],
+            ["Hades", 999],
+            ["Hades II", 1499],
+            ["Returnal", 2499],
+            ["Sifu", 1499],
+            ["Resident Evil 2 Remake", 1999]
+
+        ];
+
+
+        function createGame(game, number) {
+
+            return `
+                <div class="game">
+
+                    <span class="game-name">
+                        ${number}. ${game[0]}
+                    </span>
+
+                    <span class="price">
+                        ₹${game[1].toLocaleString('en-IN')}
+                    </span>
+
+                    <button class="cart-btn">
+                        ADD TO CART
+                    </button>
+
+                </div>
+            `;
+        }
+
+
+        const topGames = document.getElementById("top-games");
+        const allGames = document.getElementById("all-games");
+
+
+        // First 50 games
+
+        for (let i = 0; i < 50; i++) {
+
+            topGames.innerHTML += createGame(games[i], i + 1);
+
+        }
+
+
+        // Games 51 onwards
+
+        for (let i = 50; i < games.length; i++) {
+
+            allGames.innerHTML += createGame(games[i], i + 1);
+
+        }
+
+    </script>
+
+</body>
+
+</html>
