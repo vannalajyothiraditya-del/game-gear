@@ -204,36 +204,75 @@
         background-color: black;
         
     }
-    @media (max-width: 1000px) {
+    /* Mobile screen */
+@media (max-width: 600px){
 
-    .heading {
-        font-size: 40px;
-        left: 25%;
+    .background-img{
+        height: 100vh;
+        width: 100%;
     }
 
-    .logo {
-        width: 50px;
-        height: 50px;
+    .wallpaper{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
     }
 
-    .elements {
-        left: 80%;
-        gap: 10px;
-        font-size: 12px;
-    }
-
-    .middle-text {
-        left: 30%;
+    /* GAMEGEAR heading */
+    .heading{
+        top: 7%;
+        left: 28%;
+        transform: translate(-50%, -50%);
         font-size: 25px;
+        white-space: nowrap;
     }
 
-    .shop {
-        left: 80%;
-        font-size: 10px;
-        padding: 10px 25px;
+    /* Logo */
+    .logo{
+        width: 45px;
+        height: 45px;
+        top: 7%;
+        left: 7%;
     }
-}
-    </style>
+
+    /* Navigation */
+    .elements{
+        top: 12%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        justify-content: center;
+        gap: 12px;
+        font-size: 9px;
+    }
+
+    /* Middle text */
+    .middle-text{
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+        font-size: 18px;
+        white-space: normal;
+    }
+
+    .middle-text h2{
+        margin: 10px 0;
+    }
+
+    /* Shop button */
+    .shop{
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 10px;
+        padding: 12px 25px;
+        margin: 0;
+        white-space: nowrap;
+    }
+}    </style>
 </head>
 
 <body>
